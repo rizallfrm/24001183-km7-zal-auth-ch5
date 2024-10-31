@@ -8,7 +8,7 @@ module.exports = {
     const users = [];
     for (let i = 0; i < 20; i++) {
       users.push({
-        name: faker.name.findName(),
+        username: faker.name.findName(),
         email: faker.internet.email(),
         password: faker.internet.password(),
         role: faker.random.arrayElement(["admin", "member"]),

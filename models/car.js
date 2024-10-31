@@ -1,28 +1,65 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+const { Model } = require("sequelize");
+
 module.exports = (sequelize, DataTypes) => {
   class Car extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      // Define association with User model
+      this.belongsTo(models.User, { foreignKey: "createdBy", as: "creator" });
+      this.belongsTo(models.User, { foreignKey: "updatedBy", as: "updater" });
+      this.belongsTo(models.User, { foreignKey: "deletedBy", as: "deleter" });
     }
   }
-  Car.init({
-    brand: DataTypes.STRING,
-    model: DataTypes.STRING,
-    available: DataTypes.BOOLEAN,
-    createdBy: DataTypes.INTEGER,
-    updatedBy: DataTypes.INTEGER,
-    deletedBy: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Car',
-  });
+
+  Car.init(
+    {
+      id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4,
+        primaryKey: true,
+      },
+      brand: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      model: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      available: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
+      },
+      createdBy: {
+        type: DataTypes.UUID,
+        references: {
+          model: "Users", // Make sure this matches the User model name in the database
+          key: "id",
+        },
+      },
+      updatedBy: {
+        type: DataTypes.UUID,
+        references: {
+          model: "Users",
+          key: "id",
+        },
+      },
+      deletedBy: {
+        type: DataTypes.UUID,
+        references: {
+          model: "Users",
+          key: "id",
+        },
+      },
+    },
+    {
+      sequelize,
+      modelName: "Car",
+    },
+    {
+      timestamps: true,
+    },
+  );
+
   return Car;
 };
