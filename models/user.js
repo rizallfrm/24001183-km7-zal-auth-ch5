@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       id: {
         type: DataTypes.INTEGER,
-        autoIncrement: true, // Mengatur agar ID di-generate otomatis
+        autoIncrement: true,
         primaryKey: true,
       },
       username: {

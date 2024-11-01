@@ -42,6 +42,7 @@ const login = async (req, res) => {
   }
 };
 
+// only for superadmin
 const superadminLogin = async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -67,8 +68,9 @@ const superadminLogin = async (req, res) => {
   }
 };
 
+// Endpoint To Add Admin (Superadmin Only)
 const addAdmin = async (req, res) => {
-  const { username, password,email } = req.body;
+  const { username, password, email } = req.body;
   const { role } = req.user;
 
   if (role !== "superadmin") {
@@ -83,12 +85,52 @@ const addAdmin = async (req, res) => {
       username,
       password: hashedPassword,
       role: "admin",
-      email
+      email,
     });
-    res.status(201).json({ message: "Admin added successfully", newAdmin });
+    res.status(201).json({
+      status: "Success",
+      isSuccess: true,
+      message: "Admin added successfully",
+      data: { newAdmin },
+    });
   } catch (error) {
-    res.status(500).json({ message: "Error adding admin", error });
+    res.status(500).json({
+      status: "Failed",
+      isSuccess: false,
+      message: "Error adding admin",
+      error,
+      data: null,
+    });
   }
 };
 
-module.exports = { login, register, superadminLogin, addAdmin };
+// for Member Registration
+const registerMember = async (req, res) => {
+  const { username, password, email } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  try {
+    const user = await User.create({
+      username,
+      password: hashedPassword,
+      role: "member",
+      email,
+    });
+    res.status(201).json({
+      status: "Success",
+      isSuccess: true,
+      message: "Member registered successfully",
+      data: { user },
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "Failed",
+      isSuccess: false,
+      message: "Error registering user",
+      error,
+      data: null,
+    });
+  }
+};
+
+module.exports = { login, register, superadminLogin, addAdmin, registerMember };

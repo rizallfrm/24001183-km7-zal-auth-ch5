@@ -1,14 +1,13 @@
 "use strict";
 
 const faker = require("faker");
-const bcrypt = require("bcrypt"); // Import bcrypt
-
+const bcrypt = require('bcrypt')
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     const users = [];
 
-    // Menambahkan satu superadmin
+    // add superadmin
     users.push({
       username: "superadmin", // Anda bisa mengganti ini dengan nama yang diinginkan
       email: faker.internet.email(),
