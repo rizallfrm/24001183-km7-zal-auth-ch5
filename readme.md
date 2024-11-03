@@ -7,7 +7,7 @@ The API documentation is available at the following endpoints:
 
 ### Superadmin Credentials
 
-- username : `superaadmin`
+- username : `superadmin`
 - Password: `superadminpassword`
 - Email: `superadmin@gmail.com`
 
