@@ -12,4 +12,4 @@ The API documentation is available at the following endpoints:
 - Email: `superadmin@gmail.com`
 
 ### Example Image From API docs
-![Contoh Gambar](/public/assets/image.png)
+![Contoh Gambar](/public/assets/img.png)
