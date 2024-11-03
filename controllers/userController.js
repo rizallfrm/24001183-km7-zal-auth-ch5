@@ -1,5 +1,6 @@
 const { create } = require("domain");
 const { User } = require("../models");
+const { error } = require("console");
 
 const getAllUsers = async (req, res) => {
   try {
@@ -7,11 +8,16 @@ const getAllUsers = async (req, res) => {
     const users = await User.findAll();
     res.status(200).json({
       status: "Success",
+      isSuccess: true,
+      message: "Success get all users",
       data: { users },
     });
   } catch (error) {
     res.status(404).json({
       status: "Failed",
+      isSuccess: false,
+      message: "Failed get users data",
+      error,
     });
   }
 };
@@ -23,12 +29,14 @@ const createUser = async (req, res) => {
     const user = await User.create({ username, email, password });
     res.status(201).json({
       status: "Success",
+      isSuccess: true,
       message: "User created successfully",
       data: { user },
     });
   } catch (error) {
     res.status(500).json({
       status: "Failed",
+      isSuccess: false,
       message: "Error creating user",
       error,
     });
@@ -43,16 +51,20 @@ const getUserById = async (req, res) => {
     if (!user) {
       return res.status(404).json({
         status: "Failed",
+        isSuccess: false,
         message: "User not found",
       });
     }
     res.status(200).json({
       status: "Success",
+      isSuccess: true,
+      message: "Success get users by id",
       data: { user },
     });
   } catch (error) {
     res.status(500).json({
       status: "Failed",
+      isSuccess: false,
       message: "Error fetching user",
       error,
     });
@@ -68,6 +80,7 @@ const updateUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({
         status: "Failed",
+        isSuccess: false,
         message: "User not found",
       });
     }
@@ -75,12 +88,14 @@ const updateUser = async (req, res) => {
     await user.update({ username, email, password });
     res.status(200).json({
       status: "Success",
+      isSuccess: true,
       message: "User updated successfully",
       data: { user },
     });
   } catch (error) {
     res.status(500).json({
       status: "Failed",
+      isSuccess: false,
       message: "Error updating user",
       error,
     });
@@ -95,6 +110,7 @@ const deleteUser = async (req, res) => {
     if (!user) {
       return res.status(404).json({
         status: "Failed",
+        isSuccess: false,
         message: "User not found",
       });
     }
@@ -102,11 +118,13 @@ const deleteUser = async (req, res) => {
     await user.destroy();
     res.status(200).json({
       status: "Success",
+      isSuccess: true,
       message: "User deleted successfully",
     });
   } catch (error) {
     res.status(500).json({
       status: "Failed",
+      isSuccess: false,
       message: "Error deleting user",
       error,
     });

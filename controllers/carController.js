@@ -1,5 +1,5 @@
 const { Car } = require("../models");
-
+const {User} = require("../models")
 const getAllCars = async (req, res) => {
   try {
     const cars = await Car.findAll();
@@ -20,7 +20,7 @@ const getAllCars = async (req, res) => {
 };
 
 const createCars = async (req, res) => {
-  const { brand, model, available = true } = req.body;
+  const { brand, model, available = true } = req.body; 
   const { role, id } = req.user;
 
   if (role !== "admin" && role !== "superadmin") {
@@ -37,18 +37,27 @@ const createCars = async (req, res) => {
       model,
       available,
       createdBy: id,
-      updatedBy: id,
+      updatedBy: id, 
     });
+
+    const user = await User.findByPk(id); 
 
     res.status(201).json({
       status: "Success",
       message: "Car created successfully",
       cars,
       isSuccess: true,
-      data: { cars },
+      data: {
+        cars,
+        updatedBy: {
+          id: user.id,
+          username: user.username,
+        },
+      },
     });
   } catch (error) {
     console.error("Error details:", error);
+   
     res.status(500).json({
       status: "Failed",
       message: "Error creating car",
@@ -74,7 +83,7 @@ const updateCar = async (req, res) => {
   }
 
   const { brand, model, available } = req.body;
-  const { role, id: userId } = req.user;
+  const { role, id: userId, username } = req.user; 
 
   if (role !== "admin" && role !== "superadmin") {
     return res.status(403).json({
@@ -106,7 +115,13 @@ const updateCar = async (req, res) => {
       message: "Car updated successfully",
       car,
       isSuccess: true,
-      data: { car },
+      data: {
+        car,
+        updatedBy: {
+          id: userId, 
+          username: username, 
+        },
+      },
     });
   } catch (error) {
     console.error("Error details:", error);
@@ -119,9 +134,10 @@ const updateCar = async (req, res) => {
   }
 };
 
+
 const deleteCar = async (req, res) => {
   const { id } = req.params;
-  const { role, id: userId } = req.user;
+  const { role, id: userId } = req.user; 
 
   if (role !== "admin" && role !== "superadmin") {
     return res.status(403).json({
@@ -141,13 +157,26 @@ const deleteCar = async (req, res) => {
       });
     }
 
-    await car.destroy();
+    const user = await User.findByPk(userId); 
+
+    await Car.update(
+      { deletedBy: user.id }, 
+      { where: { id } }
+    );
+    await car.destroy(); 
 
     res.json({
       status: "Success",
       isSuccess: true,
       message: "Car deleted successfully",
-      data: { carId: id, deletedBy: userId },
+      data: {
+        carId: id,
+        deletedBy: {
+          id: user.id,
+          name: user.username,
+          role: role
+        },
+      },
     });
   } catch (error) {
     console.error("Error details:", error);
@@ -159,5 +188,6 @@ const deleteCar = async (req, res) => {
     });
   }
 };
+
 
 module.exports = { getAllCars, createCars, updateCar, deleteCar };

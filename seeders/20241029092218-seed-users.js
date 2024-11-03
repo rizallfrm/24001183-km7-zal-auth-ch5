@@ -1,7 +1,7 @@
 "use strict";
 
 const faker = require("faker");
-const bcrypt = require('bcrypt')
+const bcrypt = require("bcrypt");
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
@@ -9,15 +9,14 @@ module.exports = {
 
     // add superadmin
     users.push({
-      username: "superadmin", 
-      email: faker.internet.email(),
-      password: await bcrypt.hash("superadminpassword", 10), 
+      username: process.env.SUPERADMIN_USERNAME,
+      email: process.env.SUPERADMIN_EMAIL,
+      password: await bcrypt.hash(process.env.SUPERADMIN_PASSWORD, 10),
       role: "superadmin",
       createdAt: new Date(),
       updatedAt: new Date(),
     });
 
- 
     for (let i = 0; i < 19; i++) {
       users.push({
         username: faker.name.findName(),
@@ -28,7 +27,7 @@ module.exports = {
         updatedAt: new Date(),
       });
     }
-    
+
     await queryInterface.bulkInsert("Users", users, {});
   },
 
