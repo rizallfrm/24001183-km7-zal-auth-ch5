@@ -10,3 +10,6 @@ The API documentation is available at the following endpoints:
 - username : `superaadmin`
 - Password: `superadminpassword`
 - Email: `superadmin@gmail.com`
+
+### Example Image From API docs
+![Contoh Gambar](/public/assets/image.png)
