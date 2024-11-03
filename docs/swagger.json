@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "http://{{base_url}}"
+      "url": "http://localhost:3000/api/v1"
     }
   ],
   "tags": [
@@ -1212,7 +1212,7 @@
     "/users/8": {
       "delete": {
         "tags": ["Users"],
-        "summary": "New Request",
+        "summary": "Delete Car",
         "responses": {
           "200": {
             "description": "OK",
@@ -1338,7 +1338,7 @@
     "/auth/superadmin/login": {
       "post": {
         "tags": ["Auth"],
-        "summary": "Register",
+        "summary": "Login only for superadmin",
         "requestBody": {
           "content": {
             "application/json": {
@@ -1353,8 +1353,8 @@
           }
         },
         "responses": {
-          "201": {
-            "description": "Created",
+          "200": {
+            "description": "OK",
             "headers": {
               "X-Powered-By": {
                 "schema": {
@@ -1403,6 +1403,197 @@
               "application/json": {
                 "schema": {
                   "type": "object"
+                },
+                "example": {
+                  "status": "Success",
+                  "isSuccess": true,
+                  "message": "Login successfull",
+                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEsInJvbGUiOiJzdXBlcmFkbWluIiwiaWF0IjoxNzMwNDQ2NzA4LCJleHAiOjE3MzA0NTAzMDh9.4AqGmi4d0qJteSwgpexTlKSv7yD6KVKC_T0SK3Hh6kI"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Invalid credentials or not a superadmin",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "Failed" },
+                    "isSuccess": { "type": "boolean", "example": false },
+                    "message": {
+                      "type": "string",
+                      "example": "Invalid credentials or not a superadmin"
+                    },
+                    "requestBody": {
+                      "type": "object",
+                      "properties": {
+                        "username": {
+                          "type": "string",
+                          "example": "superadmin"
+                        },
+                        "password": {
+                          "type": "string",
+                          "example": "superadminpassword123"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/admin/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Create admin for only superadmin",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string", "example": "admin_rizal" },
+                  "password": { "type": "string", "example": "zall" },
+                  "email": { "type": "string", "example": "rizal@gmail.com" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Admin added successfully"
+                    },
+                    "newAdmin": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer", "example": 23 },
+                        "username": {
+                          "type": "string",
+                          "example": "admin_rizal"
+                        },
+                        "password": {
+                          "type": "string",
+                          "example": "$2b$10$cdVHSx3AyxyyVCgnwXfWM.FT1Ko3K1oCdwIj3ppRFEhAPSo/4.k3S"
+                        },
+                        "role": { "type": "string", "example": "admin" },
+                        "email": {
+                          "type": "string",
+                          "example": "rizal@gmail.com"
+                        },
+                        "updatedAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2024-11-01T08:35:40.229Z"
+                        },
+                        "createdAt": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2024-11-01T08:35:40.229Z"
+                        }
+                      }
+                    }
+                  }
+                },
+                "example": {
+                  "message": "Admin added successfully",
+                  "newAdmin": {
+                    "id": 23,
+                    "username": "admin_rizal",
+                    "password": "$2b$10$cdVHSx3AyxyyVCgnwXfWM.FT1Ko3K1oCdwIj3ppRFEhAPSo/4.k3S",
+                    "role": "admin",
+                    "email": "rizal@gmail.com",
+                    "updatedAt": "2024-11-01T08:35:40.229Z",
+                    "createdAt": "2024-11-01T08:35:40.229Z"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Only superadmin can add admins",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "string", "example": "Failed" },
+                    "isSuccess": { "type": "boolean", "example": false },
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized access"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "/auth/register": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register a new member for only superadmin",
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "username": { "type": "string", "example": "jali_2" },
+                  "password": { "type": "string", "example": "jaly" },
+                  "email": {
+                    "type": "string",
+                    "example": "jali@gmail.com"
+                  }
+                },
+                "required": ["username", "password", "email"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": "Success",
+                    "isSuccess": true,
+                    "message": {
+                      "type": "string",
+                      "example": "Member registered successfully"
+                    },
+                    "data": {
+                      "user": {
+                        "id": 25,
+                        "username": "jali_2",
+                        "password": "$2b$10$zJFpNxKHMY8V5rM9gH3miO9nyCPM0/hMhcReRLEiK90uC2Ojbfo8y",
+                        "role": "member",
+                        "email": "jali@gmail.com",
+                        "updatedAt": "2024-11-01T10:13:46.441Z",
+                        "createdAt": "2024-11-01T10:13:46.441Z"
+                      }
+                    }
+                  }
                 },
                 "example": {
                   "status": "Success",
