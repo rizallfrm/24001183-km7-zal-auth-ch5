@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       createdBy: {
         type: DataTypes.INTEGER,
         references: {
-          model: "Users", // Make sure this matches the User model name in the database
+          model: "Users", 
           key: "id",
         },
       },
