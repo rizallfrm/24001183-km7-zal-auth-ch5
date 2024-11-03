@@ -3,6 +3,7 @@ const express = require("express");
 const morgan = require("morgan");
 
 const router = require("./routes");
+const docsRouter = require("./routes/documentation");
 const { systemController } = require("./controllers");
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(morgan("dev"));
 
 app.get("/api/v1/health-check", systemController.healthCheck);
+app.use("/api-docs", docsRouter);
 app.use("/api/v1", router);
 app.use(systemController.onLost);
 

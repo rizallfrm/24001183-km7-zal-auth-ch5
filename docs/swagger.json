@@ -1,0 +1,1430 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Car-Management-API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://{{base_url}}"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Cars"
+    },
+    {
+      "name": "Users"
+    },
+    {
+      "name": "Auth"
+    }
+  ],
+  "paths": {
+    "/cars": {
+      "get": {
+        "tags": ["Cars"],
+        "summary": "Get All Cars",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "2500"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"9c4-W/v4ucLPOTq5X5qhClGCqaCrwk8\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 09:39:12 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": "Success",
+                  "message": "Success get cars data",
+                  "isSuccess": true,
+                  "data": {
+                    "cars": [
+                      {
+                        "id": "68ef5053-f016-429f-b97f-4b8aca0cfec1",
+                        "brand": "Porsche",
+                        "model": "Charger",
+                        "available": false,
+                        "createdBy": 3,
+                        "updatedBy": 2,
+                        "deletedBy": 1,
+                        "createdAt": "2024-11-03T09:31:04.551Z",
+                        "updatedAt": "2024-11-03T09:31:04.551Z"
+                      },
+                      {
+                        "id": "361930da-fec3-401c-be1f-952af82cbb99",
+                        "brand": "Chrysler",
+                        "model": "Beetle",
+                        "available": false,
+                        "createdBy": 1,
+                        "updatedBy": 1,
+                        "deletedBy": 1,
+                        "createdAt": "2024-11-03T09:31:04.551Z",
+                        "updatedAt": "2024-11-03T09:31:04.551Z"
+                      },
+                      {
+                        "id": "0aaea847-5b58-4b03-ab42-c506372f6374",
+                        "brand": "Chevrolet",
+                        "model": "2",
+                        "available": false,
+                        "createdBy": 1,
+                        "updatedBy": 2,
+                        "deletedBy": 3,
+                        "createdAt": "2024-11-03T09:31:04.551Z",
+                        "updatedAt": "2024-11-03T09:31:04.551Z"
+                      },
+                      {
+                        "id": "31d9005f-dd44-4b5e-81fb-4fb5bb4d496e",
+                        "brand": "Maserati",
+                        "model": "XC90",
+                        "available": false,
+                        "createdBy": 2,
+                        "updatedBy": 3,
+                        "deletedBy": 1,
+                        "createdAt": "2024-11-03T09:31:04.551Z",
+                        "updatedAt": "2024-11-03T09:31:04.551Z"
+                      },
+                      {
+                        "id": "de98f7b0-7087-4b25-99bb-0f029b0411ae",
+                        "brand": "Maserati",
+                        "model": "Escalade",
+                        "available": false,
+                        "createdBy": 1,
+                        "updatedBy": 3,
+                        "deletedBy": 2,
+                        "createdAt": "2024-11-03T09:31:04.551Z",
+                        "updatedAt": "2024-11-03T09:31:04.551Z"
+                      },
+                      {
+                        "id": "280dc9d8-f2c4-4172-8621-7dae28a7f41f",
+                        "brand": "Kia",
+                        "model": "Grand Caravan",
+                        "available": false,
+                        "createdBy": 3,
+                        "updatedBy": 2,
+                        "deletedBy": 3,
+                        "createdAt": "2024-11-03T09:31:04.551Z",
+                        "updatedAt": "2024-11-03T09:31:04.551Z"
+                      },
+                      {
+                        "id": "1ddb4d0c-e1cf-4c0b-a50b-3763d7530e59",
+                        "brand": "Toyota",
+                        "model": "Alpine",
+                        "available": true,
+                        "createdBy": 2,
+                        "updatedBy": 3,
+                        "deletedBy": 3,
+                        "createdAt": "2024-11-03T09:31:04.551Z",
+                        "updatedAt": "2024-11-03T09:31:04.551Z"
+                      },
+                      {
+                        "id": "75aa2b71-db33-4745-a36f-93cc6ee84454",
+                        "brand": "Chrysler",
+                        "model": "XTS",
+                        "available": true,
+                        "createdBy": 3,
+                        "updatedBy": 3,
+                        "deletedBy": 1,
+                        "createdAt": "2024-11-03T09:31:04.552Z",
+                        "updatedAt": "2024-11-03T09:31:04.552Z"
+                      },
+                      {
+                        "id": "f21aa424-f68f-42a5-987a-35ecae509b84",
+                        "brand": "Bentley",
+                        "model": "Aventador",
+                        "available": false,
+                        "createdBy": 1,
+                        "updatedBy": 2,
+                        "deletedBy": 2,
+                        "createdAt": "2024-11-03T09:31:04.552Z",
+                        "updatedAt": "2024-11-03T09:31:04.552Z"
+                      },
+                      {
+                        "id": "6214e585-29e8-4997-aad2-5fa2605b8818",
+                        "brand": "Bentley",
+                        "model": "Volt",
+                        "available": false,
+                        "createdBy": 3,
+                        "updatedBy": 2,
+                        "deletedBy": 3,
+                        "createdAt": "2024-11-03T09:31:04.552Z",
+                        "updatedAt": "2024-11-03T09:31:04.552Z"
+                      },
+                      {
+                        "id": "98ff609d-c617-4c20-b0e7-20110fcb2c99",
+                        "brand": "Daihatsu",
+                        "model": "Civic",
+                        "available": true,
+                        "createdBy": 1,
+                        "updatedBy": 1,
+                        "deletedBy": null,
+                        "createdAt": "2024-11-03T09:35:12.895Z",
+                        "updatedAt": "2024-11-03T09:35:12.895Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Cars"],
+        "summary": "Create Cars",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "brand": "Yamaha",
+                  "model": "Civic",
+                  "available": true
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE3MzA2MzY1NDYsImV4cCI6MTczMDY0MDE0Nn0.Z5qQiEDUbY2YGydFdskUdiryJBkm_yZQ-yYLVdik09E"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "580"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"244-VTWZyLpt1yAqEP53RBarBB/yHOk\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 12:39:41 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": "Success",
+                  "message": "Car created successfully",
+                  "cars": {
+                    "id": "6417f789-1b5a-43a5-93ba-0083ed91948f",
+                    "brand": "Yamaha",
+                    "model": "Civic",
+                    "available": true,
+                    "createdBy": 1,
+                    "updatedBy": 1,
+                    "updatedAt": "2024-11-03T12:39:41.638Z",
+                    "createdAt": "2024-11-03T12:39:41.638Z",
+                    "deletedBy": null
+                  },
+                  "isSuccess": true,
+                  "data": {
+                    "cars": {
+                      "id": "6417f789-1b5a-43a5-93ba-0083ed91948f",
+                      "brand": "Yamaha",
+                      "model": "Civic",
+                      "available": true,
+                      "createdBy": 1,
+                      "updatedBy": 1,
+                      "updatedAt": "2024-11-03T12:39:41.638Z",
+                      "createdAt": "2024-11-03T12:39:41.638Z",
+                      "deletedBy": null
+                    },
+                    "updatedBy": {
+                      "id": 1,
+                      "username": "superadmin"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cars/0aaea847-5b58-4b03-ab42-c506372f6374": {
+      "put": {
+        "tags": ["Cars"],
+        "summary": "Update Car",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "brand": "Mini",
+                  "model": "A6",
+                  "available": false
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE3MzA2MzY1NDYsImV4cCI6MTczMDY0MDE0Nn0.Z5qQiEDUbY2YGydFdskUdiryJBkm_yZQ-yYLVdik09E"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "564"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"234-LTQ2IhQbvzcKelqry/NiPH/6Frw\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 12:40:18 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": "Success",
+                  "message": "Car updated successfully",
+                  "car": {
+                    "id": "0aaea847-5b58-4b03-ab42-c506372f6374",
+                    "brand": "Mini",
+                    "model": "A6",
+                    "available": false,
+                    "createdBy": 1,
+                    "updatedBy": 1,
+                    "deletedBy": 3,
+                    "createdAt": "2024-11-03T09:31:04.551Z",
+                    "updatedAt": "2024-11-03T12:32:50.842Z"
+                  },
+                  "isSuccess": true,
+                  "data": {
+                    "car": {
+                      "id": "0aaea847-5b58-4b03-ab42-c506372f6374",
+                      "brand": "Mini",
+                      "model": "A6",
+                      "available": false,
+                      "createdBy": 1,
+                      "updatedBy": 1,
+                      "deletedBy": 3,
+                      "createdAt": "2024-11-03T09:31:04.551Z",
+                      "updatedAt": "2024-11-03T12:32:50.842Z"
+                    },
+                    "updatedBy": {
+                      "id": 1,
+                      "username": "superadmin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "27"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"1b-+hyVTXaAZn38wYQ0jjrBzf9HwPI\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 11:17:40 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "Unauthorized!"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Cars"],
+        "summary": "Delete Car",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwicm9sZSI6InN1cGVyYWRtaW4iLCJpYXQiOjE3MzA2MzY1NDYsImV4cCI6MTczMDY0MDE0Nn0.Z5qQiEDUbY2YGydFdskUdiryJBkm_yZQ-yYLVdik09E"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "191"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"bf-EfbbHZHC/zBXSbwlavV2OXbsDkA\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 12:27:32 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": "Success",
+                  "isSuccess": true,
+                  "message": "Car deleted successfully",
+                  "data": {
+                    "carId": "75aa2b71-db33-4745-a36f-93cc6ee84454",
+                    "deletedBy": {
+                      "id": 1,
+                      "name": "superadmin",
+                      "role": "superadmin"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "32"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"20-2RqHD6kaUW9yXBkJM4BxciU8/Ik\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 09:51:03 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "message": "No token provided!"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get All Users",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "4858"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"12fa-xdRBu99WGNKBQ8Bw/m2WXIm5xGs\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 11:05:46 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": "Success",
+                  "data": {
+                    "users": [
+                      {
+                        "id": 1,
+                        "username": "superadmin",
+                        "email": "Sean.Greenfelder@gmail.com",
+                        "password": "$2b$10$OCjBjJ6Uh0caBBLsR3tqFuMt4VRKRRS6O2OrCw.QXMy6kZVQF6WPG",
+                        "role": "superadmin",
+                        "createdAt": "2024-11-03T09:31:03.168Z",
+                        "updatedAt": "2024-11-03T09:31:03.168Z"
+                      },
+                      {
+                        "id": 2,
+                        "username": "Gertrude O'Reilly",
+                        "email": "Kitty_Lebsack@hotmail.com",
+                        "password": "$2b$10$/QGgyj/70F.idMVQWNLaoOqbjBinZ8Kt40OkASAYCeA8.5yE6WXXu",
+                        "role": "member",
+                        "createdAt": "2024-11-03T09:31:03.224Z",
+                        "updatedAt": "2024-11-03T09:31:03.224Z"
+                      },
+                      {
+                        "id": 3,
+                        "username": "Krista Huel",
+                        "email": "Luis_Feest@hotmail.com",
+                        "password": "$2b$10$7hApw4rx1djb39n31tCj5.y4F/EiNL51qHKG.JHwfJrE2F7OT0icW",
+                        "role": "member",
+                        "createdAt": "2024-11-03T09:31:03.279Z",
+                        "updatedAt": "2024-11-03T09:31:03.279Z"
+                      },
+                      {
+                        "id": 4,
+                        "username": "Marta Renner",
+                        "email": "Freddie67@yahoo.com",
+                        "password": "$2b$10$nHjtoSk2V4AwAAuu2ZBtg.7cgL.N9UI7Ec86kcYwiIVJ89/cgdQcS",
+                        "role": "admin",
+                        "createdAt": "2024-11-03T09:31:03.334Z",
+                        "updatedAt": "2024-11-03T09:31:03.334Z"
+                      },
+                      {
+                        "id": 5,
+                        "username": "Deanna Wilderman",
+                        "email": "Courtney67@yahoo.com",
+                        "password": "$2b$10$Eq4ornkTwv5ueeWdKP/lYuQV/N4uPyYDfWvXb0dk1RSOM/g8Oo/lq",
+                        "role": "member",
+                        "createdAt": "2024-11-03T09:31:03.391Z",
+                        "updatedAt": "2024-11-03T09:31:03.391Z"
+                      },
+                      {
+                        "id": 6,
+                        "username": "Kevin Tillman DDS",
+                        "email": "Faustino.Cormier52@hotmail.com",
+                        "password": "$2b$10$uoxJfPZuxM7M8yecGDDIS.Koo8IGFJ2PyzQxUb2qWqSVJlWzihzS.",
+                        "role": "member",
+                        "createdAt": "2024-11-03T09:31:03.446Z",
+                        "updatedAt": "2024-11-03T09:31:03.446Z"
+                      },
+                      {
+                        "id": 7,
+                        "username": "Faye Cummerata",
+                        "email": "Fern_Kuhic@hotmail.com",
+                        "password": "$2b$10$1l3CEi9XR0AfyIpIrKwg1u.2ENI9xoT4Xtp6qbJethIT.Zn0NgL3a",
+                        "role": "member",
+                        "createdAt": "2024-11-03T09:31:03.499Z",
+                        "updatedAt": "2024-11-03T09:31:03.499Z"
+                      },
+                      {
+                        "id": 8,
+                        "username": "Carlos Kohler",
+                        "email": "Thomas_Halvorson2@yahoo.com",
+                        "password": "$2b$10$MGYV5ve9IM.lpJJ8.1h0rOhVH/8bHNrRueQpHWJOxrSFa9FEvP0DK",
+                        "role": "member",
+                        "createdAt": "2024-11-03T09:31:03.553Z",
+                        "updatedAt": "2024-11-03T09:31:03.553Z"
+                      },
+                      {
+                        "id": 9,
+                        "username": "Elsa Medhurst",
+                        "email": "Madaline.Nolan20@gmail.com",
+                        "password": "$2b$10$LvHDO0vwqbdkxe/WLGANrOkJBq.M8SYgmf3.J.otNfq1m7obqzKde",
+                        "role": "admin",
+                        "createdAt": "2024-11-03T09:31:03.608Z",
+                        "updatedAt": "2024-11-03T09:31:03.608Z"
+                      },
+                      {
+                        "id": 10,
+                        "username": "Beverly Langosh PhD",
+                        "email": "Tessie76@gmail.com",
+                        "password": "$2b$10$qv3QdcSz3dnyJHCkFqxlLOXniEi7li9zQKUgtu7dmM1oz/sJjqZNK",
+                        "role": "member",
+                        "createdAt": "2024-11-03T09:31:03.665Z",
+                        "updatedAt": "2024-11-03T09:31:03.665Z"
+                      },
+                      {
+                        "id": 11,
+                        "username": "Alton Kuhic",
+                        "email": "Cornelius.McCullough81@hotmail.com",
+                        "password": "$2b$10$7JcUBI50EGCEsmhOqo28TOt1u1HGG/Q0uA2QYfRFBl9PB7ohfFJ8C",
+                        "role": "member",
+                        "createdAt": "2024-11-03T09:31:03.721Z",
+                        "updatedAt": "2024-11-03T09:31:03.721Z"
+                      },
+                      {
+                        "id": 12,
+                        "username": "Alexandra Weimann",
+                        "email": "Karina.Champlin98@gmail.com",
+                        "password": "$2b$10$C4u.b0/WSd46vxxMzix1LeaQNr11UpH0onNoJmWkwA5YQ9VXh2D9G",
+                        "role": "admin",
+                        "createdAt": "2024-11-03T09:31:03.789Z",
+                        "updatedAt": "2024-11-03T09:31:03.789Z"
+                      },
+                      {
+                        "id": 13,
+                        "username": "Matthew Quigley",
+                        "email": "Sylvester_Gusikowski42@yahoo.com",
+                        "password": "$2b$10$i/Y7i4RlcjNzRDTI6B69H.ffUlOYkFb295ndYeRBrmzWwiYD/3ive",
+                        "role": "admin",
+                        "createdAt": "2024-11-03T09:31:03.846Z",
+                        "updatedAt": "2024-11-03T09:31:03.846Z"
+                      },
+                      {
+                        "id": 14,
+                        "username": "Lindsay Larkin",
+                        "email": "Quincy80@yahoo.com",
+                        "password": "$2b$10$Fo/sk4/8No.72ilKLLGoqOvIGPGUsvMLnXePBZAqWGNwSrXl3HOJC",
+                        "role": "admin",
+                        "createdAt": "2024-11-03T09:31:03.901Z",
+                        "updatedAt": "2024-11-03T09:31:03.901Z"
+                      },
+                      {
+                        "id": 15,
+                        "username": "Amy Stark",
+                        "email": "Alessia_Cruickshank@gmail.com",
+                        "password": "$2b$10$91gYqsWO5SjcHgjpDQ/GFOR5EXI9jNmEjzv7JLK0M4Zfpv8JaiD2q",
+                        "role": "admin",
+                        "createdAt": "2024-11-03T09:31:03.957Z",
+                        "updatedAt": "2024-11-03T09:31:03.957Z"
+                      },
+                      {
+                        "id": 16,
+                        "username": "Rochelle Bartoletti",
+                        "email": "Hector.Johns72@gmail.com",
+                        "password": "$2b$10$2pY9e6KG.SusO40pclAZ5.jgqAUEnt8Yz5cEpLr0OhQPOYuP/LW/m",
+                        "role": "member",
+                        "createdAt": "2024-11-03T09:31:04.015Z",
+                        "updatedAt": "2024-11-03T09:31:04.015Z"
+                      },
+                      {
+                        "id": 17,
+                        "username": "Orlando Kreiger",
+                        "email": "Aida93@gmail.com",
+                        "password": "$2b$10$ERs1YoHEss5v9oFo1vTHduPNw4PODBTsfC5LrhChqfyFVp6VAxw/u",
+                        "role": "member",
+                        "createdAt": "2024-11-03T09:31:04.071Z",
+                        "updatedAt": "2024-11-03T09:31:04.071Z"
+                      },
+                      {
+                        "id": 18,
+                        "username": "Sonja Waelchi",
+                        "email": "Alexie.Toy@hotmail.com",
+                        "password": "$2b$10$1l7dYhZFUXWVAI76vSk0pOYxAOvneiLam4NX3lr8teNEzQeVQEimG",
+                        "role": "admin",
+                        "createdAt": "2024-11-03T09:31:04.127Z",
+                        "updatedAt": "2024-11-03T09:31:04.127Z"
+                      },
+                      {
+                        "id": 19,
+                        "username": "Mario Beahan",
+                        "email": "Callie34@hotmail.com",
+                        "password": "$2b$10$z.J2ZF2QQNzgvZzZxgQpIOYM8Y.t39LRZM9r9G3.1ZvmqI/LkiKVK",
+                        "role": "member",
+                        "createdAt": "2024-11-03T09:31:04.184Z",
+                        "updatedAt": "2024-11-03T09:31:04.184Z"
+                      },
+                      {
+                        "id": 20,
+                        "username": "Fredrick Schiller",
+                        "email": "Adolphus.Friesen32@hotmail.com",
+                        "password": "$2b$10$LjH/6mlYE625rYq0jzcyqOAp/3GXB0gOrGWM3jCaabhdNev3yCztm",
+                        "role": "member",
+                        "createdAt": "2024-11-03T09:31:04.240Z",
+                        "updatedAt": "2024-11-03T09:31:04.240Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": ["Users"],
+        "summary": "Create User",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "username": "Yakob Sayuri Alam",
+                  "email": "yakob_21@gmail.com",
+                  "password": "yakob12345"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "252"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"fc-UdOdgzBqdbS+S3UMVI+cYQj+dHU\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 11:09:53 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": "Success",
+                  "message": "User created successfully",
+                  "data": {
+                    "user": {
+                      "role": "member",
+                      "id": 21,
+                      "username": "Yakob Sayuri",
+                      "email": "yakob@gmail.com",
+                      "password": "yakob123",
+                      "updatedAt": "2024-11-03T11:09:53.757Z",
+                      "createdAt": "2024-11-03T11:09:53.757Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/1": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get By Id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "278"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"116-6KR2QCH2PxcQhJ49PxqGlQ4+wUo\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 11:06:19 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": "Success",
+                  "data": {
+                    "user": {
+                      "id": 1,
+                      "username": "superadmin",
+                      "email": "Sean.Greenfelder@gmail.com",
+                      "password": "$2b$10$OCjBjJ6Uh0caBBLsR3tqFuMt4VRKRRS6O2OrCw.QXMy6kZVQF6WPG",
+                      "role": "superadmin",
+                      "createdAt": "2024-11-03T09:31:03.168Z",
+                      "updatedAt": "2024-11-03T09:31:03.168Z"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "64"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"40-LbiapmpP/z+sclphYEr7IVAWFU0\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 11:16:30 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": "Failed",
+                  "isSuccess": false,
+                  "message": "User not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/2": {
+      "put": {
+        "tags": ["Users"],
+        "summary": "Update User",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "username": "Jali Firman",
+                  "email": "jali12@gmail.com"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "303"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"12f-4ARv0MN7yiOvtdb8B2jp22oPTnI\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 11:07:49 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": "Success",
+                  "message": "User updated successfully",
+                  "data": {
+                    "user": {
+                      "id": 2,
+                      "username": "Jali Firman",
+                      "email": "jali12@gmail.com",
+                      "password": "$2b$10$/QGgyj/70F.idMVQWNLaoOqbjBinZ8Kt40OkASAYCeA8.5yE6WXXu",
+                      "role": "member",
+                      "createdAt": "2024-11-03T09:31:03.224Z",
+                      "updatedAt": "2024-11-03T11:07:49.269Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/8": {
+      "delete": {
+        "tags": ["Users"],
+        "summary": "New Request",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "75"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"4b-r5V2YIaXUkDauHvRNKzWU1JUA2s\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 11:14:42 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": "Success",
+                  "isSuccess": true,
+                  "message": "User deleted successfully"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "64"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"40-LbiapmpP/z+sclphYEr7IVAWFU0\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Sun, 03 Nov 2024 11:15:02 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": "Failed",
+                  "isSuccess": false,
+                  "message": "User not found"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/superadmin/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "username": "superadmin",
+                  "password": "superadminpassword"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "headers": {
+              "X-Powered-By": {
+                "schema": {
+                  "type": "string",
+                  "example": "Express"
+                }
+              },
+              "Content-Type": {
+                "schema": {
+                  "type": "string",
+                  "example": "application/json; charset=utf-8"
+                }
+              },
+              "Content-Length": {
+                "schema": {
+                  "type": "integer",
+                  "example": "319"
+                }
+              },
+              "ETag": {
+                "schema": {
+                  "type": "string",
+                  "example": "W/\"13f-OjQFXHH5d8daLJFcoR84thjcX7A\""
+                }
+              },
+              "Date": {
+                "schema": {
+                  "type": "string",
+                  "example": "Fri, 01 Nov 2024 10:13:46 GMT"
+                }
+              },
+              "Connection": {
+                "schema": {
+                  "type": "string",
+                  "example": "keep-alive"
+                }
+              },
+              "Keep-Alive": {
+                "schema": {
+                  "type": "string",
+                  "example": "timeout=5"
+                }
+              }
+            },
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "example": {
+                  "status": "Success",
+                  "isSuccess": true,
+                  "message": "Member registered successfully",
+                  "data": {
+                    "user": {
+                      "id": 25,
+                      "username": "jali_2",
+                      "password": "$2b$10$zJFpNxKHMY8V5rM9gH3miO9nyCPM0/hMhcReRLEiK90uC2Ojbfo8y",
+                      "role": "member",
+                      "email": "jali@gmail.com",
+                      "updatedAt": "2024-11-01T10:13:46.441Z",
+                      "createdAt": "2024-11-01T10:13:46.441Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
