@@ -20,16 +20,26 @@ const getAllCars = async (req, res) => {
 };
 
 const createCars = async (req, res) => {
+  const { brand, model, available = true } = req.body;
+  const { role, id } = req.user;
+
+  if (role !== "admin" && role !== "superadmin") {
+    return res.status(403).json({
+      status: "Failed",
+      isSuccess: false,
+      message: "Forbidden: Only admin and superadmin can add cars data!",
+    });
+  }
+
   try {
-    console.log('masuk')
-    const { brand,model,available=true } = req.body;
     const cars = await Car.create({
       brand,
       model,
       available,
-      createdBy: req.user.id,
-      updateBy: req.user.id,
+      createdBy: id,
+      updatedBy: id,
     });
+
     res.status(201).json({
       status: "Success",
       message: "Car created successfully",
@@ -38,9 +48,7 @@ const createCars = async (req, res) => {
       data: { cars },
     });
   } catch (error) {
-    console.error("Error details:", error); // Add this line for detailed logging
-    console.log("In createCars, req.user:", req.user); // Check req.user here
-
+    console.error("Error details:", error);
     res.status(500).json({
       status: "Failed",
       message: "Error creating car",
@@ -51,4 +59,46 @@ const createCars = async (req, res) => {
   }
 };
 
-module.exports = { getAllCars, createCars };
+const updateCar = async (req, res) => {
+  const { id } = req.params;
+  const { name, brand } = req.body;
+  const { role } = req.user;
+
+  if (role !== 'admin' && role !== 'superadmin') {
+    return res.status(403).json({ message: "Forbidden: Only admin and superadmin can update cars" });
+  }
+
+  try {
+    const car = await Car.findByPk(id);
+    if (!car) {
+      return res.status(404).json({ message: "Car not found" });
+    }
+    await car.update({ name, brand });
+    res.json({ message: "Car updated successfully", car });
+  } catch (error) {
+    res.status(500).json({ message: "Error updating car", error });
+  }
+};
+
+const deleteCar = async (req, res) => {
+  const { id } = req.params;
+  const { role } = req.user;
+
+  if (role !== 'admin' && role !== 'superadmin') {
+    return res.status(403).json({ message: "Forbidden: Only admin and superadmin can delete cars" });
+  }
+
+  try {
+    const car = await Car.findByPk(id);
+    if (!car) {
+      return res.status(404).json({ message: "Car not found" });
+    }
+    await car.destroy();
+    res.json({ message: "Car deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Error deleting car", error });
+  }
+};
+
+
+module.exports = { getAllCars, createCars, updateCar, deleteCar };

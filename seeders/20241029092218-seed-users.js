@@ -9,15 +9,15 @@ module.exports = {
 
     // add superadmin
     users.push({
-      username: "superadmin", // Anda bisa mengganti ini dengan nama yang diinginkan
+      username: "superadmin", 
       email: faker.internet.email(),
-      password: await bcrypt.hash("superadminpassword", 10), // Ganti password dengan yang aman
+      password: await bcrypt.hash("superadminpassword", 10), 
       role: "superadmin",
       createdAt: new Date(),
       updatedAt: new Date(),
     });
 
-    // Menambahkan 19 pengguna lainnya
+ 
     for (let i = 0; i < 19; i++) {
       users.push({
         username: faker.name.findName(),

@@ -31,21 +31,21 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: true,
       },
       createdBy: {
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
         references: {
           model: "Users", // Make sure this matches the User model name in the database
           key: "id",
         },
       },
       updatedBy: {
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
         references: {
           model: "Users",
           key: "id",
         },
       },
       deletedBy: {
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
         references: {
           model: "Users",
           key: "id",
